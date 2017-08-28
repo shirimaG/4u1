@@ -73,5 +73,18 @@
         <item>Price:US $6.2/piece</item>
     </string-array>
 
+    <string-array name="jumper">
+        <item>30cm/20cm Mae to Male DuPont Cable Line Jumper Connector Beadboard for Arduino</item>
+        <item>30cm/20cm female to female DuPont Cable Line Jumper Connector Beadboard for Arduino</item>
+        <item>30cm/20cm Mae to female DuPont Cable Line Jumper Connector Beadboard for Arduino</item>
+
+    </string-array>
+
+    <string-array name="jumper_price">
+        <item>Price:US $1.5/piece</item>
+        <item>Price:US $1.4/piece</item>
+        <item>Price:US $1.5/piece</item>
+    </string-array>
+
 </resources>
 
