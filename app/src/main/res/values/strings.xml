@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">4U</string>
+
+    <!-- Main activity related -->
+    <string name="Type_your_wish">Search products</string>
+    <string name="menu_action_search">Search</string>
+
+    <string name="app_name">Saki Market</string>
     <string name="email_name">Email</string>
     <string name="action_settings">Settings</string>
     <string name="password">Password</string>
