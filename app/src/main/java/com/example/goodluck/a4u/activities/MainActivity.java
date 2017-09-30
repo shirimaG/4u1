@@ -1,4 +1,4 @@
-package com.example.goodluck.a4u.ux;
+package com.example.goodluck.a4u.activities;
 
 import android.app.SearchManager;
 import android.content.Context;
