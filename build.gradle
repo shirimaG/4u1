@@ -15,7 +15,19 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
     }
+}
+
+// Encapsulate custom properties that will be available in all project modules
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = "26.0.1"
+    supportLibVersion = "26.1.0"
+    minSdkVersion = 15
+    targetSdkVersion = 26
 }
 
 task clean(type: Delete) {
