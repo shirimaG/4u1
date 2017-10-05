@@ -14,10 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.goodluck.a4u.BuildConfig;
 import com.example.goodluck.a4u.R;
+import com.example.goodluck.a4u.fragments.ProductFragment;
 import com.example.goodluck.a4u.fragments.ProductsFeedFragment;
 import com.example.goodluck.a4u.utils.MsgUtils;
 
@@ -183,7 +183,8 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void onProductSelected(long productId) {
-        Toast.makeText(this, "Product clicked " + String.valueOf(productId), Toast.LENGTH_SHORT).show();
+        Fragment fragment = ProductFragment.newInstance(productId);
+        replaceFragment(fragment, ProductFragment.class.getSimpleName());
     }
 
 }
