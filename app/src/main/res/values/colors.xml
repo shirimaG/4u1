@@ -19,4 +19,6 @@
     <color name="colorAccent">#03a2dc</color>
     <color name="colorAccentDark">#039bd2</color>
 
+    <color name="semi_lighter_transparent">#2d000000</color>
+
 </resources>

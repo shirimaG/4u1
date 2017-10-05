@@ -4,103 +4,10 @@
     <string name="Type_your_wish">Search products</string>
     <string name="menu_action_search">Search</string>
 
-    <string name="app_name">Saki Market</string>
-    <string name="email_name">Email</string>
-    <string name="action_settings">Settings</string>
-    <string name="password">Password</string>
-    <string name="login">login</string>
-    <string name="skip_button">skip</string>
-    <string name="sign_up_button">sign up</string>
+    <!-- Application -->
+    <string name="app_name">Balongo</string>
 
-    <string-array name="titles">
-        <item>Arduino modules</item>
-        <item>Bluetooth modules</item>
-        <item>GSM modules</item>
-        <item>Display modules</item>
-        <item>Jumpers</item>
-        <item>Raspberry pi</item>
-        <item>Sensors</item>
-        <item>Breadboard</item>
-        <item>Pic modules</item>
-
-    </string-array>
-
-    <string-array name="price">
-        <item>Price:US $6 - 14</item>
-        <item>Price:US $4 - 9</item>
-        <item>Price:US $7.5 - 15.5</item>
-        <item>Price:US $3 - 11</item>
-        <item>Price:US $1.5 - 2.5</item>
-        <item>Price:US $20 - 45</item>
-        <item>Price:US $5 - 43</item>
-        <item>Price:US $1.5 - 4</item>
-        <item>Price:US $6 - 15</item>
-    </string-array>
-
-    <string-array name="arduino">
-        <item>Arduino Mega 2560 REV3(ATmega 16AU)Board compatible for Arduino with USB cable </item>
-        <item>Arduino NANO ATmega328P controller compatible for arduino nano</item>
-        <item>Arduino r3 high quality UNO R3 Mega328P for Arduino uno r3 + USB cable</item>
-        <item>Arduino UNO High quality one</item>
-
-    </string-array>
-
-    <string-array name="ard_price">
-        <item>Price:US $12</item>
-        <item>Price:US $4.8</item>
-        <item>Price:US $6.03</item>
-        <item>Price:US $5.5</item>
-
-    </string-array>
-
-    <string-array name="gsm">
-        <item>SIM900 850/900/1800/1900 MHz GPRS/GSM Development Board...</item>
-        <item>GPRS/GSM A6 Module, Text messages, Development Board for Wireless ...</item>
-    </string-array>
-
-    <string-array name="gsm_price">
-        <item>Price:US $16.52</item>
-        <item>Price:US $9.74</item>
-    </string-array>
-
-    <string-array name="lcd">
-        <item>LCD 1602 module green Screen 16X2 character LCD Display Module. 5V green Screen and white code ...</item>
-        <item>LCD 1602 module BLUE Screen 16X2 character LCD Display Module. 5V green Screen and white code</item>
-        <item>LCD Board 20X4 5V yellow-green screen LCD display module</item>
-        <item>LCD Board 20X4 5V BLUE screen blacklight character LCD display module</item>
-
-    </string-array>
-
-    <string-array name="lcd_price">
-        <item>Price:US $3.7/piece</item>
-        <item>Price:US $4.5/piece</item>
-        <item>Price:US $5.8/piece</item>
-        <item>Price:US $6.2/piece</item>
-    </string-array>
-
-    <string-array name="jumper">
-        <item>30cm/20cm Mae to Male DuPont Cable Line Jumper Connector Beadboard for Arduino</item>
-        <item>30cm/20cm female to female DuPont Cable Line Jumper Connector Beadboard for Arduino</item>
-        <item>30cm/20cm Mae to female DuPont Cable Line Jumper Connector Beadboard for Arduino</item>
-
-    </string-array>
-
-    <string-array name="jumper_price">
-        <item>Price:US $1.5/piece</item>
-        <item>Price:US $1.4/piece</item>
-        <item>Price:US $1.5/piece</item>
-    </string-array>
-
-    <string-array name="rasp">
-        <item>RS Version in UK: Original Raspberry pi 3 Model B 1GB LPDDR2 BCM2837 Quad Core with wiFi and Bluetooth</item>
-        <item>Raspberry Pi 3 Model B Board 1GB LPDDR2 Quad Core Ras with WiFI abd Bluetooth 2016 New</item>
-    </string-array>
-
-    <string-array name="rasp_price">
-        <item>Price:US $42.21/piece</item>
-        <item>Price:US $38.4/piece</item>
-    </string-array>
-
-
+    <!--Products related strings -->
+    <string name="products_not_found">Products not found</string>
 </resources>
 
