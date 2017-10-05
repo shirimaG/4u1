@@ -74,7 +74,7 @@ public class ProductsFeedFragment extends Fragment {
         if (null != args) {
             Log.e(TAG, "Unexpected arguments passed: " + args);
         } else {
-            MainActivity.setActionBarTitle("Products");
+            MainActivity.setActionBarTitle(getString(R.string.app_name));
 
             // Opened first time (not from backstack)
             if (productsRecycleAdapter == null || productsRecycleAdapter.getItemCount() == 0) {
