@@ -3,6 +3,7 @@ package com.example.goodluck.a4u.activities;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.goodluck.a4u.BuildConfig;
 import com.example.goodluck.a4u.R;
 import com.example.goodluck.a4u.fragments.ProductsFeedFragment;
+import com.example.goodluck.a4u.utils.MsgUtils;
 
 import timber.log.Timber;
 
@@ -25,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String MSG_MAIN_ACTIVITY_IS_NULL = "MainActivity instance is null";
     private static final String TAG = MainActivity.class.getSimpleName();
     private static MainActivity mInstance = null;
+
+    /**
+     * Indicate the app will be closed on next back press
+     */
+    public boolean isAppReadyToFinish = false;
 
     /**
      * Returns Main activity instance. Null if the activity doesn't exist
@@ -72,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
         clearBackStack();
         Timber.d("Products feed fragment called");
         Fragment fragment = ProductsFeedFragment.newInstance();
-        replaceFragment(fragment, ProductsFeedFragment.class.getSimpleName());
+        FragmentManager frgManager = getSupportFragmentManager();
+        FragmentTransaction frgTransaction = frgManager.beginTransaction();
+        frgTransaction.add(R.id.main_content_frame, fragment).commit();
+        frgManager.executePendingTransactions();
     }
 
     private void replaceFragment(Fragment newFragment, String transactionTag) {
@@ -114,6 +124,26 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onBackPressed() {
+        int x = getSupportFragmentManager().getBackStackEntryCount();
+        if (x > 1 | isAppReadyToFinish) {
+            super.onBackPressed();
+        } else {
+            // Back stack is empty. For closing the app user have to tap two times in two seconds
+            MsgUtils.showToast(this, MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.another_click_for_leaving_app),
+                    MsgUtils.ToastLength.SHORT);
+            isAppReadyToFinish = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    isAppReadyToFinish = false;
+                }
+            }, 2000);
+        }
+        super.onBackPressed();
     }
 
     private void prepareSearchView(final MenuItem searchItem) {

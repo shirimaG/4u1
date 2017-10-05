@@ -3,11 +3,20 @@
     <!-- Main activity related -->
     <string name="Type_your_wish">Search products</string>
     <string name="menu_action_search">Search</string>
+    <string name="another_click_for_leaving_app">Another click for leaving application</string>
 
     <!-- Application -->
     <string name="app_name">Balongo</string>
 
     <!--Products related strings -->
     <string name="products_not_found">Products not found</string>
+
+    <!-- General strings -->
+    <string name="no_network_connection">No network connection</string>
+    <string name="internal_error">Opps!, Internal error</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="clear">Clear</string>
+
 </resources>
 
