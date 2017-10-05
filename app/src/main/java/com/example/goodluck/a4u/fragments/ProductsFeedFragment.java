@@ -94,7 +94,7 @@ public class ProductsFeedFragment extends Fragment {
         productsRecycleAdapter = new ProductsRecycleAdapter(getActivity(), new ProductRecyclerInterface() {
             @Override
             public void onProductSelected(View view, Product product) {
-                ((MainActivity) getActivity()).onProductSelected(product.getId());
+                ((MainActivity) getActivity()).onProductSelected(product);
             }
         });
     }

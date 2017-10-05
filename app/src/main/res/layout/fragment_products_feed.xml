@@ -8,13 +8,18 @@
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/products_feed_coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingRight="16dp"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="16dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/feed_products_recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
+            android:scrollbars="none"
             app:layout_behavior=""/>
 
 

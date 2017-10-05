@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.example.goodluck.a4u.BuildConfig;
 import com.example.goodluck.a4u.R;
+import com.example.goodluck.a4u.data.entities.product.Product;
 import com.example.goodluck.a4u.fragments.ProductFragment;
 import com.example.goodluck.a4u.fragments.ProductsFeedFragment;
 import com.example.goodluck.a4u.utils.MsgUtils;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Prepare tool bar
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        final Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -71,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.e(TAG, "GetSupportActionBar returned null");
         }
-
         addInitialFragment();
     }
 
@@ -182,8 +182,8 @@ public class MainActivity extends AppCompatActivity {
      * Launch ProductFragment
      */
 
-    public void onProductSelected(long productId) {
-        Fragment fragment = ProductFragment.newInstance(productId);
+    public void onProductSelected(Product product) {
+        Fragment fragment = ProductFragment.newInstance(product);
         replaceFragment(fragment, ProductFragment.class.getSimpleName());
     }
 

@@ -10,6 +10,7 @@
 
     <!--Products related strings -->
     <string name="products_not_found">Products not found</string>
+    <string name="product">Product</string>
 
     <!-- General strings -->
     <string name="no_network_connection">No network connection</string>
@@ -17,6 +18,10 @@
     <string name="cancel">Cancel</string>
     <string name="close">Close</string>
     <string name="clear">Clear</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="buy">BUY</string>
+
 
 </resources>
 
