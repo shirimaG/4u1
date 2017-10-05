@@ -128,8 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        int x = getSupportFragmentManager().getBackStackEntryCount();
-        if (x > 1 | isAppReadyToFinish) {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0 | isAppReadyToFinish) {
             super.onBackPressed();
         } else {
             // Back stack is empty. For closing the app user have to tap two times in two seconds
@@ -143,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }, 2000);
         }
-        super.onBackPressed();
     }
 
     private void prepareSearchView(final MenuItem searchItem) {
