@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -26,6 +27,7 @@ import com.example.goodluck.a4u.data.entities.product.ProductListResponse;
 import com.example.goodluck.a4u.interfaces.ProductRecyclerInterface;
 import com.example.goodluck.a4u.utils.Constants;
 import com.example.goodluck.a4u.utils.EndlessRecyclerScrollListener;
+import com.example.goodluck.a4u.utils.MsgUtils;
 
 import timber.log.Timber;
 
@@ -137,14 +139,18 @@ public class ProductsFeedFragment extends Fragment {
                 productsRecycleAdapter.addProducts(response.getProducts());
                 productsMetadata = response.getMetadata();
                 checkEmptyContent();
-                loadMoreProgress.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                checkEmptyContent();
-                // TODO: 05/10/2017 show error to application user
-                Timber.e("WTF error: %s", error.getMessage());
+                if (error instanceof NoConnectionError){
+                    MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_NO_NETWORK, null, MsgUtils.ToastLength.SHORT);
+                    loadMoreProgress.setVisibility(View.GONE);
+                }
+                else
+                    checkEmptyContent();
+                Timber.e("Error fetching products: %s", error.getMessage());
+
             }
         });
 
@@ -161,6 +167,7 @@ public class ProductsFeedFragment extends Fragment {
             emptyContentView.setVisibility(View.VISIBLE);
             productsRecyclerView.setVisibility(View.INVISIBLE);
         }
+        loadMoreProgress.setVisibility(View.GONE);
     }
 
     @Override
