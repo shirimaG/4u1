@@ -9,7 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.example.goodluck.a4u.R;
+
+import org.json.JSONObject;
 
 import timber.log.Timber;
 
@@ -20,7 +23,29 @@ public class MsgUtils {
     public static final int TOAST_TYPE_NO_NETWORK = 3;
 
 
-    public static void showToast(Activity activity, int toastType, String message,ToastLength toastLength) {
+    public static void logAndShowErrorMessage(Activity activity, VolleyError error) {
+        try {
+            String data = new String(error.networkResponse.data);
+            showMessage(activity, new JSONObject(data));
+        } catch (Exception e) {
+            if (error.getMessage() != null && !error.getMessage().isEmpty()) {
+                Timber.e(e, error.getMessage());
+            } else {
+                Timber.e(e, "Cannot parse error message");
+                showToast(activity, TOAST_TYPE_INTERNAL_ERROR, null, ToastLength.SHORT);
+            }
+        }
+    }
+
+    public static void showMessage(Activity activity, JSONObject object) {
+        /*
+          TODO: 06/10/2017  Implement the actual fetching of individual errors
+          The following is just a place holder don't get too comfortable
+          */
+        showToast(activity, TOAST_TYPE_MESSAGE, object.toString(), ToastLength.LONG);
+    }
+
+    public static void showToast(Activity activity, int toastType, String message, ToastLength toastLength) {
         if (activity == null) {
             Timber.e(new RuntimeException(), "Called showToast with null activity");
             return;
