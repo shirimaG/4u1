@@ -7,6 +7,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -88,6 +91,9 @@ public class ProductsFeedFragment extends Fragment {
         Log.d(TAG, " - onCreateView");
         View view = inflater.inflate(R.layout.fragment_products_feed, container, false);
 
+        // This fragment will have its own menu
+        setHasOptionsMenu(true);
+
         this.emptyContentView = view.findViewById(R.id.product_feed_empty);
         this.loadMoreProgress = view.findViewById(R.id.product_feed_load_more_progress);
 
@@ -104,6 +110,7 @@ public class ProductsFeedFragment extends Fragment {
             prepareProductRecycler(view);
 
             if (null != searchQuery) {
+                setHasOptionsMenu(false);
                 String newSearchQuery;
                 try {
                     newSearchQuery = URLEncoder.encode(searchQuery, "UTF-8");
@@ -201,6 +208,15 @@ public class ProductsFeedFragment extends Fragment {
         loadMoreProgress.setVisibility(View.GONE);
     }
 
+    private void refreshProductFeed() {
+        if (productsRecycleAdapter != null){
+            productsRecycleAdapter.clear();
+            productsRecycleAdapter.notifyDataSetChanged();
+        }
+        getProducts(null);
+
+    }
+
     @Override
     public void onStop() {
         if (loadMoreProgress != null) {
@@ -219,5 +235,24 @@ public class ProductsFeedFragment extends Fragment {
     public void onDestroyView() {
         if (productsRecyclerView != null) productsRecyclerView.clearOnScrollListeners();
         super.onDestroyView();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.product_feed_fragment_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_refresh:
+                refreshProductFeed();
+                break;
+            default:
+                return false;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

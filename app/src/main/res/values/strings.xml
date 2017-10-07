@@ -21,6 +21,7 @@
     <string name="description">Description</string>
     <string name="price">Price</string>
     <string name="buy">BUY</string>
+    <string name="search">Search</string>
 
 
 </resources>
