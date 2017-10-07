@@ -55,6 +55,10 @@ public class ProductsFeedFragment extends Fragment {
 
     private View loadMoreProgress;
 
+
+    /**
+     * This string will be set when fragment is launched for search
+     */
     private String searchQuery = null;
 
 
@@ -209,6 +213,7 @@ public class ProductsFeedFragment extends Fragment {
     }
 
     private void refreshProductFeed() {
+        if (loadMoreProgress.getVisibility() == View.VISIBLE) return;
         if (productsRecycleAdapter != null){
             productsRecycleAdapter.clear();
             productsRecycleAdapter.notifyDataSetChanged();
