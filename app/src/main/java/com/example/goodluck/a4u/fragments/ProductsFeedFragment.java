@@ -29,6 +29,9 @@ import com.example.goodluck.a4u.utils.Constants;
 import com.example.goodluck.a4u.utils.EndlessRecyclerScrollListener;
 import com.example.goodluck.a4u.utils.MsgUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import timber.log.Timber;
 
 /**
@@ -49,6 +52,8 @@ public class ProductsFeedFragment extends Fragment {
 
     private View loadMoreProgress;
 
+    private String searchQuery = null;
+
 
     /**
      * Request metadata containing URLS for endlessScroll
@@ -63,6 +68,20 @@ public class ProductsFeedFragment extends Fragment {
         return new ProductsFeedFragment();
     }
 
+    /**
+     * Show product list from according to the search query
+     * @param searchQuery user search string
+     * @return new fragment instance
+     */
+    public static ProductsFeedFragment newInstance(String searchQuery) {
+        Bundle args = new Bundle();
+        args.putString(Constants.SEARCH_QUERY, searchQuery);
+
+        ProductsFeedFragment fragment = new ProductsFeedFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,23 +91,35 @@ public class ProductsFeedFragment extends Fragment {
         this.emptyContentView = view.findViewById(R.id.product_feed_empty);
         this.loadMoreProgress = view.findViewById(R.id.product_feed_load_more_progress);
 
-        Bundle args = getArguments();
-        if (null != args) {
-            Log.e(TAG, "Unexpected arguments passed: " + args);
+        Bundle arguments = getArguments();
+        if (null != arguments) {
+            this.searchQuery = arguments.getString(Constants.SEARCH_QUERY);
         } else {
             MainActivity.setActionBarTitle(getString(R.string.app_name));
-
-            // Opened first time (not from backstack)
-            if (productsRecycleAdapter == null || productsRecycleAdapter.getItemCount() == 0) {
-                prepareRecyclerAdapter();
-                prepareProductRecycler(view);
-                getProducts(null);
-            } else {
-                prepareProductRecycler(view);
-                Log.d(TAG, "Restore previous state. (Products already loaded)");
-            }
         }
 
+        // Opened for the first time (not from back stack)
+        if (productsRecycleAdapter == null || productsRecycleAdapter.getItemCount() == 0) {
+            prepareRecyclerAdapter();
+            prepareProductRecycler(view);
+
+            if (null != searchQuery) {
+                String newSearchQuery;
+                try {
+                    newSearchQuery = URLEncoder.encode(searchQuery, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    Timber.e(e, "Unsupported encoding exception");
+                    newSearchQuery = "";
+                }
+                String url = EndPoints.PRODUCTS + "&search=" + newSearchQuery;
+                getProducts(url);
+            } else {
+                getProducts(null);
+            }
+        } else {
+            prepareProductRecycler(view);
+            Timber.d("Restore from previous state: ");
+        }
         return view;
     }
 

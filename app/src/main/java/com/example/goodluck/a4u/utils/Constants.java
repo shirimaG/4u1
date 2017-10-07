@@ -3,6 +3,9 @@ package com.example.goodluck.a4u.utils;
 
 
 public class Constants {
+
+    public static final String SEARCH_QUERY = "search";
+
     /**
      * Volley request unknown code
      */

@@ -175,7 +175,10 @@ public class MainActivity extends AppCompatActivity {
      * @param searchQuery text used for products search
      */
     private void onSearchSubmitted(String searchQuery) {
+        clearBackStack();
         Timber.d("Search submitted: ?search=%s",searchQuery);
+        Fragment fragment = ProductsFeedFragment.newInstance(searchQuery);
+        replaceFragment(fragment, ProductsFeedFragment.class.getSimpleName());
     }
 
     /**
